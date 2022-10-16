@@ -1,38 +1,26 @@
 ﻿using System;
 
-namespace Sum_of_Two_Numbers
+namespace Travelling
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int start = int.Parse(Console.ReadLine());
-            int finish = int.Parse(Console.ReadLine());
-            int num = int.Parse(Console.ReadLine());
-            int times = 0;
-            int valid = 0;
-            int done = 0;
-            for (int i = start; i <= finish; i++)
+            string destination = Console.ReadLine();
+            while (destination != "End")
             {
-                for (int j = start; j <= finish; j++)
+                double needness = double.Parse(Console.ReadLine());
+                while (true)
                 {
-                    times++;
-                    if (i+j==num)
+                    double money = double.Parse(Console.ReadLine());
+                    needness -= money;
+                    if (needness<=0)
                     {
-                        valid++;
-                        Console.WriteLine($"Combination N:{times} ({i} + {j} = {num})");
-                        done++;
                         break;
                     }
                 }
-                if (done == 1)
-                {
-                    break;
-                }
-            }
-            if (valid == 0)
-            {
-                Console.WriteLine($"{times} combinations - neither equals {num}");
+                Console.WriteLine($"Going to {destination}!"); 
+                destination = Console.ReadLine();
             }
         }
     }
