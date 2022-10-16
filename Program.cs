@@ -1,17 +1,16 @@
 ﻿using System;
 
-namespace Multiplication_Table
+namespace Number_Pyramid
 {
     class Program
     {
         static void Main(string[] args)
         {
-            for (int i = 1; i < 11; i++)
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 1; j < 11; j++)
+                for (int j = 0; j < 60; j++)
                 {
-                    double result = i * j;
-                    Console.WriteLine($"{i} * {j} = {result}");
+                    Console.WriteLine($"{i}:{j}");
                 }
             }
         }
