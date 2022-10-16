@@ -1,27 +1,19 @@
 ﻿using System;
 
-namespace Combinations
+namespace Multiplication_Table
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int n = int.Parse(Console.ReadLine());
-            int times = 0;
-            for (int first = 0; first <= n; first++)
+            for (int i = 1; i < 11; i++)
             {
-                for (int second = 0; second <= n; second++)
+                for (int j = 1; j < 11; j++)
                 {
-                    for (int third = 0; third <= n; third++)
-                    {
-                        if (first + second + third == n)
-                        {
-                            times++;
-                        }
-                    }
+                    double result = i * j;
+                    Console.WriteLine($"{i} * {j} = {result}");
                 }
             }
-            Console.WriteLine(times);
         }
     }
 }
