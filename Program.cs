@@ -1,21 +1,26 @@
 ﻿using System;
 
-namespace Greater_Number
+namespace Number_100_200
 {
     class Program
     {
         static void Main(string[] args)
         {
+            //•	под 100 отпечатайте: "Less than 100"
+            //•	между 100 и 200 отпечатайте: "Between 100 and 200"
+            //•	над 200 отпечатайте: "Greater than 200
             int a = int.Parse(Console.ReadLine());
-            int b = int.Parse(Console.ReadLine());
-
-            if (a<b)
+            if (a<100)
             {
-                Console.WriteLine(b);
+                Console.WriteLine("Less than 100");
+            }
+            else if (a<=200)
+            {
+                Console.WriteLine("Between 100 and 200");
             }
             else
             {
-                Console.WriteLine(a);
+                Console.WriteLine("Greater than 200");
             }
         }
     }
