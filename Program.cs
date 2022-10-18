@@ -1,15 +1,19 @@
 ﻿using System;
 
-namespace ConsoleApp1
+namespace Even_or_Odd
 {
     class Program
     {
         static void Main(string[] args)
         {
-            double grade = double.Parse(Console.ReadLine());
-            if (grade>=5.50)
+            int a = int.Parse(Console.ReadLine());
+            if (a % 2 == 1)
             {
-                Console.WriteLine("Excellent!");
+                Console.WriteLine("odd");
+            }
+            else
+            {
+                Console.WriteLine("even");
             }
         }
     }
