@@ -1,26 +1,19 @@
 ﻿using System;
 
-namespace Number_100_200
+namespace Password_Guess
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //•	под 100 отпечатайте: "Less than 100"
-            //•	между 100 и 200 отпечатайте: "Between 100 and 200"
-            //•	над 200 отпечатайте: "Greater than 200
-            int a = int.Parse(Console.ReadLine());
-            if (a<100)
+            string a = Console.ReadLine();
+            if (a == "s3cr3t!P@ssw0rd")
             {
-                Console.WriteLine("Less than 100");
-            }
-            else if (a<=200)
-            {
-                Console.WriteLine("Between 100 and 200");
+                Console.WriteLine("Welcome");
             }
             else
             {
-                Console.WriteLine("Greater than 200");
+                Console.WriteLine("Wrong password!");
             }
         }
     }
