@@ -1,19 +1,21 @@
 ﻿using System;
 
-namespace Even_or_Odd
+namespace Greater_Number
 {
     class Program
     {
         static void Main(string[] args)
         {
             int a = int.Parse(Console.ReadLine());
-            if (a % 2 == 1)
+            int b = int.Parse(Console.ReadLine());
+
+            if (a<b)
             {
-                Console.WriteLine("odd");
+                Console.WriteLine(b);
             }
             else
             {
-                Console.WriteLine("even");
+                Console.WriteLine(a);
             }
         }
     }
