@@ -1,40 +1,31 @@
 ﻿using System;
 
-namespace Sum_Seconds
+namespace Time___15_Minutes
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int first = int.Parse(Console.ReadLine());
-            int second = int.Parse(Console.ReadLine());
-            int third = int.Parse(Console.ReadLine());
+            int hours = int.Parse(Console.ReadLine());
+            int mins = int.Parse(Console.ReadLine());
 
-            int sum = first + second + third;
-            int mins = sum / 60;
-            int seconds = sum % 60;
-
-            if (mins<1)
+            mins += 15;
+            if (mins >= 60)
             {
-                if (seconds<10)
-                {
-                    Console.WriteLine($"0:0{seconds:f0}");
-                }
-                else
-                {
-                    Console.WriteLine($"0:{seconds:f0}");
-                }
+                mins -= 60;
+                hours += 1;
             }
-            if (mins>=1)
+            if (hours >= 24)
             {
-                if (seconds<10)
-                {
-                    Console.WriteLine($"{mins:f0}:0{seconds:f0}");
-                }
-                else
-                {
-                    Console.WriteLine($"{mins:f0}:{seconds:f0}");
-                }
+                hours = 0;
+            }
+            if (mins >= 10)
+            {
+                Console.WriteLine($"{hours}:{mins}");
+            }
+            else
+            {
+                Console.WriteLine($"{hours}:0{mins}");
             }
         }
     }
