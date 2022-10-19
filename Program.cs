@@ -1,38 +1,33 @@
 ﻿using System;
 
-namespace Bonus_Score
+namespace Godzilla_vs._Kong
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int points = int.Parse(Console.ReadLine());
-            double bonus = 0;
-            if (points % 2 == 0)
+            double budget = double.Parse(Console.ReadLine());
+            int statists = int.Parse(Console.ReadLine());
+            double clothesPrice = double.Parse(Console.ReadLine());
+
+            if (statists > 150)
             {
-                bonus += 1;
+                clothesPrice *= 0.90;
             }
-            else if(points % 5 == 5)
+            double decoration = budget * 0.10;
+            double clothesPriceTotal = statists * clothesPrice;
+            double taxes = decoration + clothesPriceTotal;
+            if (budget>=taxes)
             {
-                bonus += 2;
-            }
-            if (points <= 100)
-            {
-                bonus += 5;
-                Console.WriteLine(bonus);
-                Console.WriteLine(bonus + points);
-            }
-            else if (points <= 1000)
-            {
-                bonus = points * 0.2;
-                Console.WriteLine(bonus);
-                Console.WriteLine(bonus + points);
+                double left = budget - taxes;
+                Console.WriteLine("Action!");
+                Console.WriteLine($"Wingard starts filming with {left:f2} leva left.");
             }
             else
             {
-                bonus = points * 0.1;
-                Console.WriteLine(bonus);
-                Console.WriteLine(bonus + points);
+                double need = taxes - budget;
+                Console.WriteLine("Not enough money!");
+                Console.WriteLine($"Wingard needs {need:f2} leva more.");
             }
         }
     }
