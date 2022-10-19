@@ -1,45 +1,26 @@
 ﻿using System;
 
-namespace Toy_Shop
+namespace World_Swimming_Record
 {
     class Program
     {
         static void Main(string[] args)
         {
-            double tripPrice = double.Parse(Console.ReadLine());
-            int puzzle = int.Parse(Console.ReadLine());
-            int dolls = int.Parse(Console.ReadLine());
-            int bears = int.Parse(Console.ReadLine());
-            int minions = int.Parse(Console.ReadLine());
-            int trucks = int.Parse(Console.ReadLine());
+            double record = double.Parse(Console.ReadLine());
+            double meters = double.Parse(Console.ReadLine());
+            double swimingOneMeter = double.Parse(Console.ReadLine());
 
-            //•	Пъзел - 2.60 лв.
-            //•	Говореща кукла -3 лв.
-            //•	Плюшено мече -4.10 лв.
-            //•	Миньон - 8.20 лв.
-            //•	Камионче - 2 лв.
-            double budget = 0;
-            int numbers = puzzle + dolls + bears + minions + trucks;
-            budget += puzzle * 2.60;
-            budget += dolls * 3;
-            budget += bears * 4.10;
-            budget += minions * 8.20;
-            budget += trucks * 2;
-            if (numbers>=50 )
+            double swimingTime = meters * swimingOneMeter;
+            swimingTime += (meters / 15) * 12.5;
+            Math.Floor(swimingTime);
+            if (swimingTime <= record)
             {
-                budget *= 0.75;
-            }
-            budget *= 0.90;
-            //o	"Yes! {оставащите пари} lv left."
-            if (budget>=tripPrice)
-            {
-                double left = budget - tripPrice;
-                Console.WriteLine($"Yes! {left:f2} lv left.");
+                Console.WriteLine($" Yes, he succeeded! The new world record is {swimingTime:f2} seconds.");
             }
             else
             {
-                double need = tripPrice - budget;
-                Console.WriteLine($"Not enough money! {need:f2} lv needed.");
+                double need = swimingTime-record;
+                Console.WriteLine($"No, he failed! He was {need:f2} seconds slower.");
             }
         }
     }
