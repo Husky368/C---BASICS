@@ -1,33 +1,40 @@
 ﻿using System;
 
-namespace Godzilla_vs._Kong
+namespace Sum_Seconds
 {
     class Program
     {
         static void Main(string[] args)
         {
-            double budget = double.Parse(Console.ReadLine());
-            int statists = int.Parse(Console.ReadLine());
-            double clothesPrice = double.Parse(Console.ReadLine());
+            int first = int.Parse(Console.ReadLine());
+            int second = int.Parse(Console.ReadLine());
+            int third = int.Parse(Console.ReadLine());
 
-            if (statists > 150)
+            int sum = first + second + third;
+            int mins = sum / 60;
+            int seconds = sum % 60;
+
+            if (mins<1)
             {
-                clothesPrice *= 0.90;
+                if (seconds<10)
+                {
+                    Console.WriteLine($"0:0{seconds:f0}");
+                }
+                else
+                {
+                    Console.WriteLine($"0:{seconds:f0}");
+                }
             }
-            double decoration = budget * 0.10;
-            double clothesPriceTotal = statists * clothesPrice;
-            double taxes = decoration + clothesPriceTotal;
-            if (budget>=taxes)
+            if (mins>=1)
             {
-                double left = budget - taxes;
-                Console.WriteLine("Action!");
-                Console.WriteLine($"Wingard starts filming with {left:f2} leva left.");
-            }
-            else
-            {
-                double need = taxes - budget;
-                Console.WriteLine("Not enough money!");
-                Console.WriteLine($"Wingard needs {need:f2} leva more.");
+                if (seconds<10)
+                {
+                    Console.WriteLine($"{mins:f0}:0{seconds:f0}");
+                }
+                else
+                {
+                    Console.WriteLine($"{mins:f0}:{seconds:f0}");
+                }
             }
         }
     }
