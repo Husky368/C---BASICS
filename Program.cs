@@ -1,36 +1,38 @@
 ﻿using System;
 
-namespace Speed_Info
+namespace Bonus_Score
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //•	При скорост до 10(включително) отпечатайте "slow"
-            //•	При скорост над 10 и до 50(включително) отпечатайте "average"
-            //•	При скорост над 50 и до 150(включително) отпечатайте "fast"
-            //•	При скорост над 150 и до 1000(включително) отпечатайте "ultra fast"
-            //•	При по-висока скорост отпечатайте "extremely fast"
-            double a = double.Parse(Console.ReadLine());
-            if (a <= 10)
+            int points = int.Parse(Console.ReadLine());
+            double bonus = 0;
+            if (points % 2 == 0)
             {
-                Console.WriteLine("slow");
+                bonus += 1;
             }
-            else if (a <= 50)
+            else if(points % 5 == 5)
             {
-                Console.WriteLine("average");
+                bonus += 2;
             }
-            else if (a <= 150)
+            if (points <= 100)
             {
-                Console.WriteLine("fast");
+                bonus += 5;
+                Console.WriteLine(bonus);
+                Console.WriteLine(bonus + points);
             }
-            else if (a <= 1000)
+            else if (points <= 1000)
             {
-                Console.WriteLine("ultra fast");
+                bonus = points * 0.2;
+                Console.WriteLine(bonus);
+                Console.WriteLine(bonus + points);
             }
             else
             {
-                Console.WriteLine("extremely fast");
+                bonus = points * 0.1;
+                Console.WriteLine(bonus);
+                Console.WriteLine(bonus + points);
             }
         }
     }
