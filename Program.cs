@@ -1,155 +1,97 @@
 ﻿using System;
 
-namespace Ski_Trip
+namespace Trade_Commissions
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int days = int.Parse(Console.ReadLine());
-            string type = Console.ReadLine();
-            string opinion = Console.ReadLine();
-            days -= 1;
-            double cost = 0;
+            string city = Console.ReadLine();
+            double sales = double.Parse(Console.ReadLine());
 
-            switch (type)
+            switch (city)
             {
-                case "apartment":
-                    if (days < 10)
+                case "Varna":
+                    if (sales < 0)
                     {
-                        cost = days * 25;
-                        cost *= 0.70;
-                        if (opinion=="positive")
-                        {
-                            cost *= 1.25;
-                        }
-                        else
-                        {
-                            cost *= 0.90;
-                        }
-                        Console.WriteLine($"{cost:f2}");
+                        Console.WriteLine("error");
                         break;
                     }
-                    else if (days <= 15)
+                    if (sales <= 500)
                     {
-                        cost = days * 25;
-                        cost *= 0.65;
-                        if (opinion == "positive")
-                        {
-                            cost *= 1.25;
-                        }
-                        else
-                        {
-                            cost *= 0.90;
-                        }
-                        Console.WriteLine($"{cost:f2}");
-                        break;
+                        Console.WriteLine($"{(sales * 0.045):f2}");
+                    }
+                    else if (sales <= 1000)
+                    {
+                        Console.WriteLine($"{(sales * 0.075):f2}");
+                    }
+                    else if (sales <= 10000)
+                    {
+                        Console.WriteLine($"{(sales * 0.10):f2}");
+                    }
+                    else if (sales > 10000)
+                    {
+                        Console.WriteLine($"{(sales * 0.13):f2}");
                     }
                     else
                     {
-                        cost = days * 25;
-                        cost *= 0.50;
-                        if (opinion == "positive")
-                        {
-                            cost *= 1.25;
-                        }
-                        else
-                        {
-                            cost *= 0.90;
-                        }
-                        Console.WriteLine($"{cost:f2}");
+                        Console.WriteLine("error");
+                    }
+                    break;
+                case "Sofia":
+                    if (sales < 0)
+                    {
+                        Console.WriteLine("error");
                         break;
                     }
-                case "room for one person":
-                    if (days < 10)
+                    if (sales <= 500)
                     {
-                        cost = days * 18;
-                        if (opinion == "positive")
-                        {
-                            cost *= 1.25;
-                        }
-                        else
-                        {
-                            cost *= 0.90;
-                        }
-                        Console.WriteLine($"{cost:f2}");
-                        break;
+                        Console.WriteLine($"{(sales * 0.05):f2}");
                     }
-                    else if (days <= 15)
+                    else if (sales <= 1000)
                     {
-                        cost = days * 18;
-                        if (opinion == "positive")
-                        {
-                            cost *= 1.25;
-                        }
-                        else
-                        {
-                            cost *= 0.90;
-                        }
-                        Console.WriteLine($"{cost:f2}");
-                        break;
+                        Console.WriteLine($"{(sales * 0.07):f2}");
+                    }
+                    else if (sales <= 10000)
+                    {
+                        Console.WriteLine($"{(sales * 0.08):f2}");
+                    }
+                    else if (sales > 10000)
+                    {
+                        Console.WriteLine($"{(sales * 0.12):f2}");
                     }
                     else
                     {
-                        cost = days * 18;
-                        if (opinion == "positive")
-                        {
-                            cost *= 1.25;
-                        }
-                        else
-                        {
-                            cost *= 0.90;
-                        }
-                        Console.WriteLine($"{cost:f2}");
-                        break;
+                        Console.WriteLine("error");
                     }
-                case "president apartment":
-                    if (days < 10)
+                    break;
+                case "Plovdiv":
+                    //0 ≤ s ≤ 500	500 < s ≤ 1 000	    1 000 < s ≤ 10 000	s > 10 000
+                    //  5.5%	            8%	                12%         	14.5%
+                    if (sales<0)
                     {
-                        cost = days * 35;
-                        cost *= 0.90;
-                        if (opinion == "positive")
-                        {
-                            cost *= 1.25;
-                        }
-                        else
-                        {
-                            cost *= 0.90;
-                        }
-                        Console.WriteLine($"{cost:f2}");
+                        Console.WriteLine("error");
                         break;
                     }
-                    else if (days <= 15)
+                    if (sales <= 500)
                     {
-                        cost = days * 35;
-                        cost *= 0.85;
-                        if (opinion == "positive")
-                        {
-                            cost *= 1.25;
-                        }
-                        else
-                        {
-                            cost *= 0.90;
-                        }
-                        Console.WriteLine($"{cost:f2}");
-                        break;
+                        Console.WriteLine($"{(sales * 0.055):f2}");
                     }
-                    else
+                    else if (sales <= 1000)
                     {
-                        cost = days * 35;
-                        cost *= 0.80;
-                        if (opinion == "positive")
-                        {
-                            cost *= 1.25;
-                        }
-                        else
-                        {
-                            cost *= 0.90;
-                        }
-                        Console.WriteLine($"{cost:f2}");
-                        break;
+                        Console.WriteLine($"{(sales * 0.08):f2}");
                     }
+                    else if (sales <= 10000)
+                    {
+                        Console.WriteLine($"{(sales * 0.12):f2}");
+                    }
+                    else if (sales > 10000)
+                    {
+                        Console.WriteLine($"{(sales * 0.145):f2}");
+                    }
+                    break;
                 default:
+                    Console.WriteLine("error");
                     break;
             }
         }
