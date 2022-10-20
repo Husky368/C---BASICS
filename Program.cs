@@ -1,26 +1,43 @@
 ﻿using System;
 
-namespace World_Swimming_Record
+namespace Building
 {
     class Program
     {
         static void Main(string[] args)
         {
-            double record = double.Parse(Console.ReadLine());
-            double meters = double.Parse(Console.ReadLine());
-            double swimingOneMeter = double.Parse(Console.ReadLine());
-
-            double swimingTime = meters * swimingOneMeter;
-            swimingTime += (meters / 15) * 12.5;
-            Math.Floor(swimingTime);
-            if (swimingTime <= record)
+            int flat = int.Parse(Console.ReadLine());
+            int rooms = int.Parse(Console.ReadLine());
+            int curruntFlat = flat;
+            while (curruntFlat>0)
             {
-                Console.WriteLine($" Yes, he succeeded! The new world record is {swimingTime:f2} seconds.");
-            }
-            else
-            {
-                double need = swimingTime-record;
-                Console.WriteLine($"No, he failed! He was {need:f2} seconds slower.");
+                if (curruntFlat==flat)
+                {
+                    for (int i = 0; i < rooms; i++)
+                    {
+                        Console.Write($"L{curruntFlat}{i} ");
+                    }
+                    curruntFlat--;
+                    Console.WriteLine();
+                }
+                if (curruntFlat % 2 == 0)
+                {
+                    for (int i = 0; i < rooms; i++)
+                    {
+                        Console.Write($"O{curruntFlat}{i} ");
+                    }
+                    curruntFlat--;
+                    Console.WriteLine();
+                }
+                if (curruntFlat % 2 == 1)
+                {
+                    for (int i = 0; i < rooms; i++)
+                    {
+                        Console.Write($"A{curruntFlat}{i} ");
+                    }
+                    curruntFlat--;
+                    Console.WriteLine();
+                }
             }
         }
     }
