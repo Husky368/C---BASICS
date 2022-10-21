@@ -1,36 +1,66 @@
 ﻿using System;
 
-namespace Cake
+namespace Coins
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int l = int.Parse(Console.ReadLine());
-            int w = int.Parse(Console.ReadLine());
-            double cake = l * w;
-            double cakeFirst = cake;
-            double addTotal = 0;
-            string stop = Console.ReadLine();
-            while (stop!="STOP")
+            double coin = double.Parse(Console.ReadLine());
+            int coinCount = 0;
+             while (coin>=2)
             {
-                int addCake = int.Parse(stop);
-                cake -= addCake;
-                addTotal += addCake;
-                if (cake < 0)
+                coin -= 2;
+                coinCount += 1;
+                Math.Round(coin, 2 , MidpointRounding.AwayFromZero);
+            }
+            while (coin >= 1)
+            {
+                coin -= 1;
+                coinCount += 1;
+                coin = Math.Round(coin, 2, MidpointRounding.AwayFromZero);
+            }
+            while (coin >= 0.50)
+            {
+                coin -= 0.50;
+                coinCount += 1;
+                coin = Math.Round(coin, 2, MidpointRounding.AwayFromZero);
+            }
+            while (coin >= 0.20)
+            {
+                coin -= 0.20;
+                coinCount += 1;
+                coin = Math.Round(coin, 2, MidpointRounding.AwayFromZero);
+            }
+            while (coin >= 0.10)
+            {
+                coin -= 0.10;
+                coinCount += 1;
+                coin = Math.Round(coin, 2, MidpointRounding.AwayFromZero);
+            }
+            while (coin >= 0.05)
+            {
+                coin -= 0.05;
+                coinCount += 1;
+                coin = Math.Round(coin, 2, MidpointRounding.AwayFromZero);
+            }
+            while (coin >= 0.02)
+            {
+                coin -= 0.02;
+                coinCount += 1;
+                coin = Math.Round(coin, 2, MidpointRounding.AwayFromZero);
+            }
+            while (coin >= 0.01)
+            {
+                coin -= 0.01;
+                coinCount += 1;
+                coin = Math.Round(coin, 2, MidpointRounding.AwayFromZero);
+                if (coin<0.01)
                 {
-                    double diff = Math.Abs( cakeFirst - addTotal);
-
-                    Console.WriteLine($"No more cake left! You need {diff} pieces more.");
-                    break;
+                    coin = 0;
                 }
-                stop = Console.ReadLine();
             }
-            if (stop=="STOP")
-            {
-                double diff = cakeFirst - addTotal;
-                Console.WriteLine($"{diff} pieces are left.");
-            }
+            Console.WriteLine(coinCount);
         }
     }
 }
