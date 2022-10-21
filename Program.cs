@@ -1,22 +1,36 @@
 ﻿using System;
 
-namespace average
+namespace Cake
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int n = int.Parse(Console.ReadLine());
-            double sum = 0;
-            double times = 0;
-            for (int i = 1; i <=  n; i++)
+            int l = int.Parse(Console.ReadLine());
+            int w = int.Parse(Console.ReadLine());
+            double cake = l * w;
+            double cakeFirst = cake;
+            double addTotal = 0;
+            string stop = Console.ReadLine();
+            while (stop!="STOP")
             {
-                int number = int.Parse(Console.ReadLine());
-                sum += number;
-                times += 1;
+                int addCake = int.Parse(stop);
+                cake -= addCake;
+                addTotal += addCake;
+                if (cake < 0)
+                {
+                    double diff = Math.Abs( cakeFirst - addTotal);
+
+                    Console.WriteLine($"No more cake left! You need {diff} pieces more.");
+                    break;
+                }
+                stop = Console.ReadLine();
             }
-            double avrg = sum / times;
-            Console.WriteLine($"{avrg:f2}");
+            if (stop=="STOP")
+            {
+                double diff = cakeFirst - addTotal;
+                Console.WriteLine($"{diff} pieces are left.");
+            }
         }
     }
 }
