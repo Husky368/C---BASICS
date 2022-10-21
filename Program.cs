@@ -1,66 +1,43 @@
 ﻿using System;
 
-namespace Coins
+namespace Exam_Preparation
 {
     class Program
     {
         static void Main(string[] args)
         {
-            double coin = double.Parse(Console.ReadLine());
-            int coinCount = 0;
-             while (coin>=2)
+            int numGrades = int.Parse(Console.ReadLine());
+            int numNegGrades = 0;
+            double sumGrades = 0;
+            int exercises = 0;
+            string last = "";
+            while (numGrades > numNegGrades)
             {
-                coin -= 2;
-                coinCount += 1;
-                Math.Round(coin, 2 , MidpointRounding.AwayFromZero);
-            }
-            while (coin >= 1)
-            {
-                coin -= 1;
-                coinCount += 1;
-                coin = Math.Round(coin, 2, MidpointRounding.AwayFromZero);
-            }
-            while (coin >= 0.50)
-            {
-                coin -= 0.50;
-                coinCount += 1;
-                coin = Math.Round(coin, 2, MidpointRounding.AwayFromZero);
-            }
-            while (coin >= 0.20)
-            {
-                coin -= 0.20;
-                coinCount += 1;
-                coin = Math.Round(coin, 2, MidpointRounding.AwayFromZero);
-            }
-            while (coin >= 0.10)
-            {
-                coin -= 0.10;
-                coinCount += 1;
-                coin = Math.Round(coin, 2, MidpointRounding.AwayFromZero);
-            }
-            while (coin >= 0.05)
-            {
-                coin -= 0.05;
-                coinCount += 1;
-                coin = Math.Round(coin, 2, MidpointRounding.AwayFromZero);
-            }
-            while (coin >= 0.02)
-            {
-                coin -= 0.02;
-                coinCount += 1;
-                coin = Math.Round(coin, 2, MidpointRounding.AwayFromZero);
-            }
-            while (coin >= 0.01)
-            {
-                coin -= 0.01;
-                coinCount += 1;
-                coin = Math.Round(coin, 2, MidpointRounding.AwayFromZero);
-                if (coin<0.01)
+                string currentEx = Console.ReadLine();
+                if (currentEx!="Enough")
                 {
-                    coin = 0;
+                    last = currentEx;
                 }
+                if (currentEx == "Enough")
+                {
+                    Console.WriteLine($"Average score: {(sumGrades / exercises):f2}");
+                    Console.WriteLine($"Number of problems: {exercises}");
+                    Console.WriteLine($"Last problem: {last}");
+                    break;
+                }
+                int grade = int.Parse(Console.ReadLine());
+                sumGrades += grade;
+                exercises++;
+                if (grade <= 4)
+                {
+                    numNegGrades++;
+                }
+
             }
-            Console.WriteLine(coinCount);
+            if (numNegGrades >= numGrades)
+            {
+                Console.WriteLine($"You need a break, {numNegGrades} poor grades.");
+            }
         }
     }
 }
