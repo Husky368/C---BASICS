@@ -1,29 +1,43 @@
 ﻿using System;
 
-namespace ConsoleApp1
+namespace Club
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int num = int.Parse(Console.ReadLine());
-            int current = 1;
-            int bigger = 0;
-            for (int row = 1; row <= num; row++)
+            double goal = double.Parse(Console.ReadLine());
+            double budget = 0;
+            double totalb = 0;
+            while (true)
             {
-                for (int i = 1; i <= row; i++)
+                string cocktail = Console.ReadLine();
+                if (cocktail == "Party!")
                 {
-                    Console.Write($"{current} ");
-                    current++;
-                    if (current>num)
+                    if (totalb >= goal)
                     {
-                        bigger++;
-                        break;
+                        Console.WriteLine($"Target acquired.");
                     }
+                    else if (totalb < goal)
+                    {
+                        double need = goal - totalb;
+                        Console.WriteLine($"We need {need:f2} leva more.");
+                    }
+                    Console.WriteLine($"Club income - {totalb:f2} leva.");
+                    break;
                 }
-                Console.WriteLine();
-                if (bigger==1)
+                int numbers = int.Parse(Console.ReadLine());
+                int lettersNum = cocktail.Length;
+                budget = lettersNum * numbers;
+                if (budget % 2 == 1)
                 {
+                    budget *= 0.75;
+                }
+                totalb += budget;
+                if (totalb>=goal)
+                {
+                    Console.WriteLine($"Target acquired.");
+                    Console.WriteLine($"Club income - {totalb:f2} leva.");
                     break;
                 }
             }
