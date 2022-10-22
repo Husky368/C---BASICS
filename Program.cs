@@ -1,47 +1,31 @@
 ﻿using System;
 
-namespace Vacation
+namespace ConsoleApp1
 {
     class Program
     {
         static void Main(string[] args)
         {
-            double trip = double.Parse(Console.ReadLine());
-            double currentMoney = double.Parse(Console.ReadLine());
-            int daySpend = 0;
-            int daysCounter = 0;
-            while (daySpend < 5)
+            int num = int.Parse(Console.ReadLine());
+            int current = 1;
+            int bigger = 0;
+            for (int row = 1; row <= num; row++)
             {
-                string action = Console.ReadLine();
-                double money = double.Parse(Console.ReadLine());
-                daysCounter++;
-                if (action == "spend")
+                for (int i = 1; i <= row; i++)
                 {
-                    currentMoney -= money;
-                    if (currentMoney < 0)
+                    Console.Write($"{current} ");
+                    current++;
+                    if (current>num)
                     {
-                        currentMoney = 0;
-                    }
-                    daySpend++;
-                }
-                else if (action == "save")
-                {
-                    currentMoney += money;
-                    if (money < 0)
-                    {
-                        money = 0;
+                        bigger++;
+                        break;
                     }
                 }
-                if (trip<=currentMoney)
+                Console.WriteLine();
+                if (bigger==1)
                 {
-                    Console.WriteLine($"You saved the money for {daysCounter} days.");
                     break;
                 }
-            }
-            if (daySpend>=5)
-            {
-                Console.WriteLine("You can't save the money.");
-                Console.WriteLine(daysCounter);
             }
         }
     }
