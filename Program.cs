@@ -1,14 +1,29 @@
 ﻿using System;
 
-namespace Numbers_Divided_by_3_Without_Reminder
+namespace Old_Books
 {
     class Program
     {
         static void Main(string[] args)
         {
-            for (int i = 3; i <= 100; i+=3)
+            string book = Console.ReadLine();
+            string curentBook = Console.ReadLine();
+            int num = 0;
+            while (curentBook != book)
             {
-                Console.WriteLine(i);
+                curentBook = Console.ReadLine();
+                num++;
+                if (curentBook==book)
+                {
+                    Console.WriteLine($"You checked {num} books and found it.");
+                    break;
+                }
+                if (curentBook=="No More Books")
+                {
+                    Console.WriteLine("The book you search is not here!");
+                    Console.WriteLine($"You checked {num} books.");
+                    break;
+                }
             }
         }
     }
