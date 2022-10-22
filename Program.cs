@@ -1,47 +1,47 @@
 ﻿using System;
 
-namespace Tournament_of_Christmas
+namespace Vacation
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int days = int.Parse(Console.ReadLine());
-            double money = double.Parse(Console.ReadLine());
-            int lose = 0;
-            int won = 0;
-            string gameName = Console.ReadLine();
-            string status = Console.ReadLine();
-            for (int i = 1; i <= days; i++)
+            double trip = double.Parse(Console.ReadLine());
+            double currentMoney = double.Parse(Console.ReadLine());
+            int daySpend = 0;
+            int daysCounter = 0;
+            while (daySpend < 5)
             {
-                int wonNum = 0;
-                int loseNum = 0;
-                if (status=="Win")
+                string action = Console.ReadLine();
+                double money = double.Parse(Console.ReadLine());
+                daysCounter++;
+                if (action == "spend")
                 {
-                    money += 20;
-                    wonNum++;
-                }
-                else if (status == "lose")
-                {
-                    loseNum++;
-                }
-                if (loseNum<wonNum)
-                {
-                    won++;
-                    money *= 1.10;
-                }
-                if (loseNum>wonNum)
-                {
-                    lose++;
-                }
-                gameName = Console.ReadLine();
-                if (gameName == "Finish")
-                {
-                    if ()
+                    currentMoney -= money;
+                    if (currentMoney < 0)
                     {
-
+                        currentMoney = 0;
+                    }
+                    daySpend++;
+                }
+                else if (action == "save")
+                {
+                    currentMoney += money;
+                    if (money < 0)
+                    {
+                        money = 0;
                     }
                 }
+                if (trip<=currentMoney)
+                {
+                    Console.WriteLine($"You saved the money for {daysCounter} days.");
+                    break;
+                }
+            }
+            if (daySpend>=5)
+            {
+                Console.WriteLine("You can't save the money.");
+                Console.WriteLine(daysCounter);
             }
         }
     }
