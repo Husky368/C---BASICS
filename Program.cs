@@ -1,28 +1,46 @@
 ﻿using System;
 
-namespace Old_Books
+namespace Tournament_of_Christmas
 {
     class Program
     {
         static void Main(string[] args)
         {
-            string book = Console.ReadLine();
-            string curentBook = Console.ReadLine();
-            int num = 0;
-            while (curentBook != book)
+            int days = int.Parse(Console.ReadLine());
+            double money = double.Parse(Console.ReadLine());
+            int lose = 0;
+            int won = 0;
+            string gameName = Console.ReadLine();
+            string status = Console.ReadLine();
+            for (int i = 1; i <= days; i++)
             {
-                curentBook = Console.ReadLine();
-                num++;
-                if (curentBook==book)
+                int wonNum = 0;
+                int loseNum = 0;
+                if (status=="Win")
                 {
-                    Console.WriteLine($"You checked {num} books and found it.");
-                    break;
+                    money += 20;
+                    wonNum++;
                 }
-                if (curentBook=="No More Books")
+                else if (status == "lose")
                 {
-                    Console.WriteLine("The book you search is not here!");
-                    Console.WriteLine($"You checked {num} books.");
-                    break;
+                    loseNum++;
+                }
+                if (loseNum<wonNum)
+                {
+                    won++;
+                    money *= 1.10;
+                }
+                if (loseNum>wonNum)
+                {
+                    lose++;
+                }
+                gameName = Console.ReadLine();
+                if (gameName == "Finish")
+                {
+                    if ()
+                    {
+
+                    }
                 }
             }
         }
