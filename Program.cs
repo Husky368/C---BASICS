@@ -1,45 +1,140 @@
 ﻿using System;
 
-namespace Club
+namespace Coffee_Machine
 {
     class Program
     {
         static void Main(string[] args)
         {
-            double goal = double.Parse(Console.ReadLine());
-            double budget = 0;
-            double totalb = 0;
-            while (true)
+            string product = Console.ReadLine();
+            string sugar = Console.ReadLine();
+            int amount = int.Parse(Console.ReadLine());
+
+            //При избрана напитка без захар има 35 % отстъпка.
+            //При избрана напитка "Espresso" и закупени поне 5 броя, има 25 % отстъпка.
+            //При сума надвишава 15 лева, 20 % отстъпка от крайната цена, 
+            double Price = 0;
+            switch (product)
             {
-                string cocktail = Console.ReadLine();
-                if (cocktail == "Party!")
-                {
-                    if (totalb >= goal)
+                //"You bought {брой напитки} cups of {напитка} for {крайна цена} lv."
+                //Без захар        Нормално        Допълнително захар
+                //1.00 лв. /бр.     1.20 лв. /бр.        1.60 лв. /бр.
+                case "Espresso":
+                    if (sugar == "Without")
                     {
-                        Console.WriteLine($"Target acquired.");
+                        Price = amount * 0.90;
+                        Price *= 0.65;
+                        if (amount > 5)
+                        {
+                            Price *= 0.75;
+                        }
+                        if (Price>15)
+                        {
+                            Price *= 0.80;
+                        }
+                        Console.WriteLine($"You bought {amount} cups of {product} for {Price:f2} lv.");
+                        break;
                     }
-                    else if (totalb < goal)
+                    else if (sugar == "Normal")
                     {
-                        double need = goal - totalb;
-                        Console.WriteLine($"We need {need:f2} leva more.");
+                        Price = amount * 1;
+                        if (amount>5)
+                        {
+                            Price *= 0.75;
+                        }
+                        if (Price>15)
+                        {
+                            Price *= 0.80;
+                        }
+                        Console.WriteLine($"You bought {amount} cups of {product} for {Price:f2} lv.");
+                        break;
+
                     }
-                    Console.WriteLine($"Club income - {totalb:f2} leva.");
+                    else if (sugar == "Extra")
+                    {
+                        Price = amount * 1.20;
+                        if (amount>5)
+                        {
+                            Price *= 0.75;
+                        }
+                        if (Price>15)
+                        {
+                            Price *= 0.80;
+                        }
+                        Console.WriteLine($"You bought {amount} cups of {product} for {Price:f2} lv.");
+                        break;
+                    }
                     break;
-                }
-                int numbers = int.Parse(Console.ReadLine());
-                int lettersNum = cocktail.Length;
-                budget = lettersNum * numbers;
-                if (budget % 2 == 1)
-                {
-                    budget *= 0.75;
-                }
-                totalb += budget;
-                if (totalb>=goal)
-                {
-                    Console.WriteLine($"Target acquired.");
-                    Console.WriteLine($"Club income - {totalb:f2} leva.");
+                case "Cappuccino":
+                    if (sugar == "Without")
+                    {
+                        Price = amount * 1;
+                        Price *= 0.65;                                       
+                        if (Price > 15)
+                        {
+                            Price *= 0.80;
+                        }
+                        Console.WriteLine($"You bought {amount} cups of {product} for {Price:f2} lv.");
+                        break;
+                    }
+                    else if (sugar == "Normal")
+                        {
+                            Price = amount * 1.20;
+                            if (Price > 15)
+                            {
+                                Price *= 0.80;
+                            }
+                            Console.WriteLine($"You bought {amount} cups of {product} for {Price:f2} lv.");
+                            break;
+
+                        }
+                    else if (sugar == "Extra")
+                    {
+                        Price = amount * 1.60;
+                        if (Price > 15)
+                        {
+                            Price *= 0.80;
+                        }
+                        Console.WriteLine($"You bought {amount} cups of {product} for {Price:f2} lv.");
+                        break;
+                    }
                     break;
-                }
+                case "Tea":
+                    if (sugar == "Without")
+                    {
+                        Price = amount * 0.50;
+                        Price *= 0.65;
+                        if (Price > 15)
+                        {
+                            Price *= 0.80;
+                        }
+                        Console.WriteLine($"You bought {amount} cups of {product} for {Price:f2} lv.");
+                        break;
+                    }
+                    else if (sugar == "Normal")
+                    {
+                        Price = amount * 0.60;
+                        if (Price > 15)
+                        {
+                            Price *= 0.80;
+                        }
+                        Console.WriteLine($"You bought {amount} cups of {product} for {Price:f2} lv.");
+                        break;
+
+                    }
+                    else if (sugar == "Extra")
+                    {
+                        Price = amount * 0.70;
+                        if (Price > 15)
+                        {
+                            Price *= 0.80;
+                        }
+                        Console.WriteLine($"You bought {amount} cups of {product} for {Price:f2} lv.");
+                        break;
+                    }
+                    break;
+                default:
+                    break;
             }
         }
     }
